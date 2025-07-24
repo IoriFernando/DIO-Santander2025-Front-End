@@ -1,133 +1,170 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Aposta de Pascal</title>
-    </head>
-
-    <style>
-
-    .parent {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: repeat(5, 1fr);
-        gap: 8px;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aposta de Pascal</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      line-height: 1.6;
     }
 
-    .div2 {
-        grid-row: span 5;
+    .layout {
+      display: grid;
+      grid-template-areas: 
+        "header header"
+        "sidebar content";
+      grid-template-columns: 200px 1fr;
+      grid-template-rows: auto 1fr;
+      gap: 16px;
+      padding: 16px;
+      min-height: 100vh;
     }
 
-    .div3 {
-        grid-column: 1 / 6; 
-        grid-row: 1;         
+    header {
+      grid-area: header;
+      background: #eee;
+      padding: 1rem;
+      font-size: 1.5rem;
     }
 
-    .div4 {
-        grid-column: 2 / 6;
-        grid-row: 2 / 6;
+    aside.sidebar {
+      grid-area: sidebar;
+      background: #f9f9f9;
+      padding: 1rem;
     }
-    
-    </style>
-    
-    <body>
-        
-        
-    <div class="parent">
-    
-        <div class="div2">
-            Sumário
-            <ul>
-                <li><a href="#aposta">A aposta</a></li>
-                <li>Incapacidade de acreditar</li>
-                <li>Crítica</li>
-                <li>Argumento do Apelo do Medo</li>
-                <li>Argurmento do custo</li>
-                <li>Argumento da crença desonesta</li>
-                <li>Bibliografia</li>
-                <li>Referências</li>
-            </ul>
-        </div>
 
-        
-        <div class="div3">cabeçario</div>
-        
-        
-        <div class="div4">
-            <h1>A aposta de Pascal</h1>
-            <p>
-            A Aposta de Pascal é uma proposta argumentativa de filosofia apologética criada pelo filósofo, matemático e físico francês do 
-            século XVII Blaise Pascal. Ela postula que há mais a ser ganho pela suposição da existência de Deus do que pela não existência
-            de Deus, que uma pessoa racional deveria viver a sua vida de acordo com a perspectiva de que Deus existe, mesmo que seja impossível
-            para a razão nos afirmar tal.
-            Pascal formula esta aposta de um ponto de vista cristão, e foi publicado na seção 233 do seu livro póstumo Pensées (Pensamentos).
-            Historicamente, foi um trabalho pioneiro no campo da teoria das probabilidades, marcou o primeiro uso formal da teoria da decisão, 
-            e antecipou filosofias futuras como o existencialismo, pragmatismo e voluntarismo.[1]
-            </p>
+    main.content {
+      grid-area: content;
+      padding: 1rem;
+      text-align: justify;
+    }
 
-            <p> <h2 id="aposta">A aposta</h2>
-                <ul>
-                    <li>se acreditar em Deus e estiver certo, terei um ganho infinito;</li>
-                    <li>se acreditar em Deus e estiver errado, terei uma perda finita;</li>
-                    <li>se não acreditar em Deus e estiver certo, terei um ganho finito;</li>
-                    <li>se não acreditar em Deus e estiver errado, terei uma perda infinita.</li>
-                </ul>
-            </p>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
 
-            <p><h2>Incapacidade de acreditar</h2><br>
-            Pascal referenciou a dificuldade que temos em diferenciar a razão e o processo de "racionalidade", pondo em contraste com a ação de 
-            genuinamente acreditar em algo, propondo que: " atuar como se [alguém) acreditasse" pode "curar (alguém) de não acreditar".
+    table, th, td {
+      border: 1px solid #ccc;
+    }
 
-            Mas ao menos reconheça sua incapacidade de acreditar, já que a razão te trouxe a isto, e você não consegue acreditar. Esforce-se 
-            para convencer a si mesmo, não através de mais provas de Deus, mas pela redução de suas paixões. Você gostaria de ter fé, mas não sabe
-            o caminho; você quer se curar da descrença, e pede um remédio para isto. Aprenda com aqueles que estiveram presos como você, e que agora 
-            apostam todas as suas posses. Existem pessoas que sabem o caminho que você vai seguir, e que se curaram de todas as doenças que você ainda 
-            será curado. Siga o caminho através do qual começamos; agindo como se acreditasse, recebendo a água benta, assistindo missas, etc. Até mesmo 
-            isto vai te fazer acreditar naturalmente, e acabar com sua resistência.
+    th, td {
+      padding: 0.5rem;
+      text-align: left;
+    }
 
-            <small>Penées Secão III nota 233, página 40,[2] Tradução por Rafael S. T. Vieira</small>
+    pre {
+        background: #f8f8f8;
+        border-left: 3px solid #6ce;
+        padding: 1rem;
+        font-style: italic;
+        font-size: large;
+        white-space: pre-wrap;
+        margin: 1em 0; /* Adiciona margem para separar de outros elementos */
+        overflow-x: auto; /* Permite rolagem horizontal se necessário */
+        border-radius: 0 4px 4px 0; /* Borda arredondada apenas no lado direito */
+    }
 
-            Pascal propõe que se siga um caminho que ele próprio já teria passado, e que é possível se ter autêntica fé com o exercício da mesma.
-            </p>
+    .wiki-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Linux Libertine', 'Times New Roman', serif;
+    }
+
+    .wiki-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    }
+
+    .wiki-slogan {
+    font-size: 0.9em;
+    color: #666;
+    }
 
 
-            <p><h2>Análise através da teoria da decisão</h2><br>
-                As possibilidades definidas pela aposta de Pascal podem ser pensadas como uma escolha em indecisão com os valores da matriz 
-                de decisão seguinte: <br>
+    @media (max-width: 768px) {
+      .layout {
+        grid-template-areas: 
+          "header"
+          "content"
+          "sidebar";
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
 
-                <table>
+  <div class="layout">
 
-                    <tr>
-                    <th></th>
-                    <th>Deus existe (G)</th>
-                    <th>Deus não existe (¬G) </th>
-                    </tr>
+    <header class="wiki-header">
+    <img src="wikilogopng.png" width="75" class="wiki-logo" alt="Logo">
+    <span class="wiki-title">Wikipédia</span>
+    <span class="wiki-slogan">A enciclopédia livre</span>
+    </header>
+
+    <aside class="sidebar">
+      <strong>Sumário</strong>
+      <ul>
+        <li><a href="#aposta">A aposta</a></li>
+        <li><a href="#incapacidade">Incapacidade de acreditar</a></li>
+        <li><a href="#analise">Análise através da teoria da decisão</a></li>
+        <li>Crítica</li>
+        <li>Argumento do Apelo do Medo</li>
+        <li>Argumento do custo</li>
+        <li>Argumento da crença desonesta</li>
+        <li>Bibliografia</li>
+        <li>Referências</li>
+      </ul>
+    </aside>
+
+    <main class="content">
+
+      <h1 id="aposta">A Aposta de Pascal</h1>
+      <p>A Aposta de Pascal é uma proposta argumentativa de filosofia apologética criada pelo filósofo, matemático e físico francês do século XVII Blaise Pascal. Ela postula que há mais a ser ganho pela suposição da existência de Deus do que pela não existência de Deus, que uma pessoa racional deveria viver a sua vida de acordo com a perspectiva de que Deus existe, mesmo que seja impossível para a razão nos afirmar tal.
+        Pascal formula esta aposta de um ponto de vista cristão, e foi publicado na seção 233 do seu livro póstumo Pensées (Pensamentos). Historicamente, foi um trabalho pioneiro no campo da teoria das probabilidades, marcou o primeiro uso formal da teoria da decisão, e antecipou filosofias futuras como o existencialismo, pragmatismo e voluntarismo.</p>
+
+      <h2>A aposta</h2>
+      <ul>
+        <li>Se acreditar em Deus e estiver certo: ganho infinito</li>
+        <li>Se acreditar e estiver errado: perda finita</li>
+        <li>Se não acreditar e estiver certo: ganho finito</li>
+        <li>Se não acreditar e estiver errado: perda infinita</li>
+      </ul>
+
+      <h2 id="incapacidade">Incapacidade de acreditar</h2>
+      <p>Pascal referenciou a dificuldade que temos em diferenciar a razão e o processo de "racionalidade", pondo em contraste com a ação de genuinamente acreditar em algo, propondo que: " atuar como se [alguém) acreditasse" pode "curar (alguém) de não acreditar".</p>
+      <pre class="code-quote">Mas ao menos reconheça sua incapacidade de acreditar, já que a razão te trouxe a isto, e você não consegue acreditar. Esforce-se para convencer a si mesmo, não através de mais provas de Deus, mas pela redução de suas paixões. Você gostaria de ter fé, mas não sabe o caminho; você quer se curar da descrença, e pede um remédio para isto. Aprenda com aqueles que estiveram presos como você, e que agora apostam todas as suas posses. Existem pessoas que sabem o caminho que você vai seguir, e que se curaram de todas as doenças que você ainda será curado. Siga o caminho através do qual começamos; agindo como se acreditasse, recebendo a água benta, assistindo missas, etc. Até mesmo isto vai te fazer acreditar naturalmente, e acabar com sua resistência.</pre>
+      <small>Pensées Secão III nota 233, página 40,[2] Tradução por Rafael S. T. Vieira</small>
 
 
-                    <tr>
-                        <td><b>Acreditar (B)</b></td>
-                        <td>+∞ (ganho infinito)</td>
-                        <td>−1 (perda finita — 1 vida)</td>                    
-                    </tr>
-
-                    <tr>
-                        <td><b>Não acreditar (¬B)</b></td>
-                        <td>−∞ (perda infinita)</td>
-                        <td>+1 (ganho finito — 1 vida)</td>
-                    </tr>
-                </table>
-            </p>
-
-        </div>
-    
-    
-    </div>
-    
 
 
-    </body>
+      <h2 id="analise">Análise através da Teoria da Decisão</h2>
+      <table>
+        <tr>
+          <th></th>
+          <th>Deus existe (G)</th>
+          <th>Deus não existe (¬G)</th>
+        </tr>
+        <tr>
+          <td><b>Acreditar (B)</b></td>
+          <td>+∞</td>
+          <td>−1</td>
+        </tr>
+        <tr>
+          <td><b>Não acreditar (¬B)</b></td>
+          <td>−∞</td>
+          <td>+1</td>
+        </tr>
+      </table>
+    </main>
+  </div>
 
-
-
+</body>
 </html>
